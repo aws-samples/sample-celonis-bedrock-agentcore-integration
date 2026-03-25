@@ -1,0 +1,15 @@
+.venv/
+.env
+.git/
+.gitignore
+__pycache__/
+*.pyc
+.bedrock_agentcore/
+.bedrock_agentcore.yaml
+.bedrock_agentcore.yaml.example
+.dockerignore
+*.md
+*.png
+test_*.py
+celonis_oauth.py
+setupAWSbackend.py

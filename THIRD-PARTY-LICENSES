@@ -1,0 +1,701 @@
+Third-Party Software Notices and Licenses
+==========================================
+
+This project uses the following third-party packages. Each package is listed
+with its license type, copyright notice, and download location.
+
+--------------------------------------------------------------------------------
+
+** certifi (2026.2.25) **
+License: Mozilla Public License 2.0 (MPL 2.0)
+Copyright: Kenneth Reitz
+Download: https://pypi.org/project/certifi/2026.2.25/
+Note: Distributed unmodified. MPL 2.0 pre-approved for unmodified distribution.
+
+** Authlib (1.6.9) **
+License: BSD License
+Copyright: Hsiaoming Yang
+Download: https://pypi.org/project/Authlib/1.6.9/
+
+** Jinja2 (3.1.6) **
+License: BSD License
+Copyright: Pallets Projects
+Download: https://pypi.org/project/Jinja2/3.1.6/
+
+** MarkupSafe (3.0.3) **
+License: BSD-3-Clause
+Copyright: Pallets Projects
+Download: https://pypi.org/project/MarkupSafe/3.0.3/
+
+** PyJWT (2.11.0) **
+License: MIT
+Copyright: Jose Padilla
+Download: https://pypi.org/project/PyJWT/2.11.0/
+
+** PyYAML (6.0.3) **
+License: MIT License
+Copyright: Kirill Simonov
+Download: https://pypi.org/project/PyYAML/6.0.3/
+
+** Pygments (2.19.2) **
+License: BSD License
+Copyright: Georg Brandl and Pygments contributors
+Download: https://pypi.org/project/Pygments/2.19.2/
+
+** aiohappyeyeballs (2.6.1) **
+License: Python Software Foundation License
+Copyright: aiohappyeyeballs contributors
+Download: https://pypi.org/project/aiohappyeyeballs/2.6.1/
+
+** aiohttp (3.13.3) **
+License: Apache-2.0 AND MIT
+Copyright: aio-libs contributors
+Download: https://pypi.org/project/aiohttp/3.13.3/
+
+** aiosignal (1.4.0) **
+License: Apache Software License
+Copyright: aio-libs contributors
+Download: https://pypi.org/project/aiosignal/1.4.0/
+
+** annotated-doc (0.0.4) **
+License: MIT
+Copyright: annotated-doc contributors
+Download: https://pypi.org/project/annotated-doc/0.0.4/
+
+** annotated-types (0.7.0) **
+License: MIT License
+Copyright: annotated-types contributors
+Download: https://pypi.org/project/annotated-types/0.7.0/
+
+** anyio (4.12.1) **
+License: MIT
+Copyright: Alex Gronholm
+Download: https://pypi.org/project/anyio/4.12.1/
+
+** attrs (25.4.0) **
+License: MIT
+Copyright: Hynek Schlawack
+Download: https://pypi.org/project/attrs/25.4.0/
+
+** autopep8 (2.3.2) **
+License: MIT License
+Copyright: Hideo Hattori
+Download: https://pypi.org/project/autopep8/2.3.2/
+
+** aws-requests-auth (0.4.3) **
+License: BSD License
+Copyright: David Muller
+Download: https://pypi.org/project/aws-requests-auth/0.4.3/
+
+** awscrt (0.31.2) **
+License: Apache-2.0
+Copyright: Amazon.com, Inc.
+Download: https://pypi.org/project/awscrt/0.31.2/
+
+** beartype (0.22.9) **
+License: MIT License
+Copyright: Cecil Curry
+Download: https://pypi.org/project/beartype/0.22.9/
+
+** beautifulsoup4 (4.14.3) **
+License: MIT License
+Copyright: Leonard Richardson
+Download: https://pypi.org/project/beautifulsoup4/4.14.3/
+
+** bedrock-agentcore (1.4.3) **
+License: Apache Software License
+Copyright: Amazon Web Services
+Download: https://pypi.org/project/bedrock-agentcore/1.4.3/
+
+** bedrock-agentcore-starter-toolkit (0.3.2) **
+License: Apache Software License
+Copyright: Amazon Web Services
+Download: https://pypi.org/project/bedrock-agentcore-starter-toolkit/0.3.2/
+
+** boto3 (1.42.63) **
+License: Apache-2.0
+Copyright: Amazon.com, Inc.
+Download: https://pypi.org/project/boto3/1.42.63/
+
+** botocore (1.42.63) **
+License: Apache-2.0
+Copyright: Amazon.com, Inc.
+Download: https://pypi.org/project/botocore/1.42.63/
+
+** cachetools (7.0.5) **
+License: MIT
+Copyright: Thomas Kemmer
+Download: https://pypi.org/project/cachetools/7.0.5/
+
+** cffi (2.0.0) **
+License: MIT
+Copyright: Armin Rigo, Maciej Fijalkowski
+Download: https://pypi.org/project/cffi/2.0.0/
+
+** chardet (7.0.1) **
+License: MIT
+Copyright: Mark Pilgrim, Dan Blanchard
+Download: https://pypi.org/project/chardet/7.0.1/
+
+** charset-normalizer (3.4.5) **
+License: MIT
+Copyright: Ahmed Tahri
+Download: https://pypi.org/project/charset-normalizer/3.4.5/
+
+** click (8.3.1) **
+License: BSD-3-Clause
+Copyright: Pallets Projects
+Download: https://pypi.org/project/click/8.3.1/
+
+** cloudpickle (3.1.2) **
+License: BSD License
+Copyright: cloudpipe contributors
+Download: https://pypi.org/project/cloudpickle/3.1.2/
+
+** colorama (0.4.6) **
+License: BSD License
+Copyright: Jonathan Hartley
+Download: https://pypi.org/project/colorama/0.4.6/
+
+** cronsim (2.7) **
+License: BSD License
+Copyright: Peteris Krumins
+Download: https://pypi.org/project/cronsim/2.7/
+
+** cryptography (46.0.5) **
+License: Apache-2.0 OR BSD-3-Clause
+Copyright: The cryptography developers
+Download: https://pypi.org/project/cryptography/46.0.5/
+
+** cyclopts (4.8.0) **
+License: Apache-2.0
+Copyright: Brian Pugh
+Download: https://pypi.org/project/cyclopts/4.8.0/
+
+** dill (0.4.1) **
+License: BSD License
+Copyright: Mike McKerns
+Download: https://pypi.org/project/dill/0.4.1/
+
+** diskcache (5.6.3) **
+License: Apache Software License
+Copyright: Grant Jenks
+Download: https://pypi.org/project/diskcache/5.6.3/
+
+** dnspython (2.8.0) **
+License: ISC License (ISCL)
+Copyright: Bob Halley
+Download: https://pypi.org/project/dnspython/2.8.0/
+
+** docopt (0.6.2) **
+License: MIT License
+Copyright: Vladimir Keleshev
+Download: https://pypi.org/project/docopt/0.6.2/
+
+** docstring_parser (0.17.0) **
+License: MIT License
+Copyright: Marcin Kurczewski
+Download: https://pypi.org/project/docstring_parser/0.17.0/
+
+** docutils (0.22.4) **
+License: BSD License; Public Domain
+Copyright: David Goodger and docutils contributors
+Download: https://pypi.org/project/docutils/0.22.4/
+Note: Multi-licensed (BSD/GPL/Public Domain). Used under BSD license.
+
+** email-validator (2.3.0) **
+License: Unlicense
+Copyright: Joshua Tauberer
+Download: https://pypi.org/project/email-validator/2.3.0/
+
+** exceptiongroup (1.3.1) **
+License: MIT License
+Copyright: Alex Gronholm
+Download: https://pypi.org/project/exceptiongroup/1.3.1/
+
+** fakeredis (2.34.1) **
+License: BSD-3-Clause
+Copyright: James Saryerwinnie
+Download: https://pypi.org/project/fakeredis/2.34.1/
+
+** fastmcp (2.14.0) **
+License: Apache-2.0
+Copyright: Jeremiah Lowin
+Download: https://pypi.org/project/fastmcp/2.14.0/
+
+** frozenlist (1.8.0) **
+License: Apache-2.0
+Copyright: aio-libs contributors
+Download: https://pypi.org/project/frozenlist/1.8.0/
+
+** h11 (0.16.0) **
+License: MIT License
+Copyright: Nathaniel J. Smith
+Download: https://pypi.org/project/h11/0.16.0/
+
+** httpcore (1.0.9) **
+License: BSD-3-Clause
+Copyright: Tom Christie
+Download: https://pypi.org/project/httpcore/1.0.9/
+
+** httpx (0.28.1) **
+License: BSD License
+Copyright: Tom Christie
+Download: https://pypi.org/project/httpx/0.28.1/
+
+** httpx-sse (0.4.3) **
+License: MIT
+Copyright: Florimond Manca
+Download: https://pypi.org/project/httpx-sse/0.4.3/
+
+** idna (3.11) **
+License: BSD-3-Clause
+Copyright: Kim Davies
+Download: https://pypi.org/project/idna/3.11/
+
+** importlib_metadata (8.7.1) **
+License: Apache-2.0
+Copyright: Jason R. Coombs
+Download: https://pypi.org/project/importlib_metadata/8.7.1/
+
+** jaraco.classes (3.4.0) **
+License: MIT License
+Copyright: Jason R. Coombs
+Download: https://pypi.org/project/jaraco.classes/3.4.0/
+
+** jaraco.context (6.1.1) **
+License: MIT
+Copyright: Jason R. Coombs
+Download: https://pypi.org/project/jaraco.context/6.1.1/
+
+** jaraco.functools (4.4.0) **
+License: MIT
+Copyright: Jason R. Coombs
+Download: https://pypi.org/project/jaraco.functools/4.4.0/
+
+** jmespath (1.1.0) **
+License: MIT License
+Copyright: James Saryerwinnie
+Download: https://pypi.org/project/jmespath/1.1.0/
+
+** jsonschema (4.24.1) **
+License: MIT
+Copyright: Julian Berman
+Download: https://pypi.org/project/jsonschema/4.24.1/
+
+** jsonschema-path (0.4.5) **
+License: Apache Software License
+Copyright: Artur Maciag
+Download: https://pypi.org/project/jsonschema-path/0.4.5/
+
+** jsonschema-specifications (2025.9.1) **
+License: MIT
+Copyright: Julian Berman
+Download: https://pypi.org/project/jsonschema-specifications/2025.9.1/
+
+** keyring (25.7.0) **
+License: MIT
+Copyright: Jason R. Coombs
+Download: https://pypi.org/project/keyring/25.7.0/
+
+** lazy-object-proxy (1.12.0) **
+License: BSD-2-Clause
+Copyright: Ionel Cristian Maries
+Download: https://pypi.org/project/lazy-object-proxy/1.12.0/
+
+** lupa (2.6) **
+License: MIT style
+Copyright: Stefan Behnel
+Download: https://pypi.org/project/lupa/2.6/
+Note: License listed as "MIT style" — verify exact license text for compliance.
+
+** markdown-it-py (4.0.0) **
+License: MIT License
+Copyright: Chris Sewell
+Download: https://pypi.org/project/markdown-it-py/4.0.0/
+
+** markdownify (1.2.2) **
+License: MIT License
+Copyright: Matthew Tretter
+Download: https://pypi.org/project/markdownify/1.2.2/
+
+** mcp (1.26.0) **
+License: MIT License
+Copyright: Anthropic, PBC
+Download: https://pypi.org/project/mcp/1.26.0/
+
+** mcp-proxy-for-aws (1.1.6) **
+License: Apache Software License
+Copyright: Amazon Web Services
+Download: https://pypi.org/project/mcp-proxy-for-aws/1.1.6/
+
+** mdurl (0.1.2) **
+License: MIT License
+Copyright: mdurl contributors
+Download: https://pypi.org/project/mdurl/0.1.2/
+
+** more-itertools (10.8.0) **
+License: MIT
+Copyright: Erik Rose
+Download: https://pypi.org/project/more-itertools/10.8.0/
+
+** mpmath (1.3.0) **
+License: BSD License
+Copyright: Fredrik Johansson
+Download: https://pypi.org/project/mpmath/1.3.0/
+
+** multidict (6.7.1) **
+License: Apache License 2.0
+Copyright: aio-libs contributors
+Download: https://pypi.org/project/multidict/6.7.1/
+
+** openapi-pydantic (0.5.1) **
+License: MIT License
+Copyright: Mike Oakley
+Download: https://pypi.org/project/openapi-pydantic/0.5.1/
+
+** openapi-schema-validator (0.8.1) **
+License: BSD License
+Copyright: Artur Maciag
+Download: https://pypi.org/project/openapi-schema-validator/0.8.1/
+
+** openapi-spec-validator (0.8.4) **
+License: Apache-2.0
+Copyright: Artur Maciag
+Download: https://pypi.org/project/openapi-spec-validator/0.8.4/
+
+** opentelemetry-api (1.40.0) **
+License: Apache-2.0
+Copyright: OpenTelemetry Authors
+Download: https://pypi.org/project/opentelemetry-api/1.40.0/
+
+** opentelemetry-instrumentation (0.61b0) **
+License: Apache-2.0
+Copyright: OpenTelemetry Authors
+Download: https://pypi.org/project/opentelemetry-instrumentation/0.61b0/
+
+** opentelemetry-instrumentation-threading (0.61b0) **
+License: Apache-2.0
+Copyright: OpenTelemetry Authors
+Download: https://pypi.org/project/opentelemetry-instrumentation-threading/0.61b0/
+
+** opentelemetry-sdk (1.40.0) **
+License: Apache-2.0
+Copyright: OpenTelemetry Authors
+Download: https://pypi.org/project/opentelemetry-sdk/1.40.0/
+
+** opentelemetry-semantic-conventions (0.61b0) **
+License: Apache-2.0
+Copyright: OpenTelemetry Authors
+Download: https://pypi.org/project/opentelemetry-semantic-conventions/0.61b0/
+
+** packaging (26.0) **
+License: Apache-2.0 OR BSD-2-Clause
+Copyright: Donald Stufft and individual contributors
+Download: https://pypi.org/project/packaging/26.0/
+
+** pathable (0.5.0) **
+License: Apache Software License
+Copyright: Artur Maciag
+Download: https://pypi.org/project/pathable/0.5.0/
+
+** pathvalidate (3.3.1) **
+License: MIT License
+Copyright: Tsuyoshi Hombashi
+Download: https://pypi.org/project/pathvalidate/3.3.1/
+
+** pillow (12.1.1) **
+License: MIT-CMU (PIL License)
+Copyright: Jeffrey A. Clark and Pillow contributors
+Download: https://pypi.org/project/pillow/12.1.1/
+
+** pipreqs (0.4.13) **
+License: Apache Software License
+Copyright: Vadim Kravcenko
+Download: https://pypi.org/project/pipreqs/0.4.13/
+
+** platformdirs (4.9.4) **
+License: MIT
+Copyright: platformdirs contributors
+Download: https://pypi.org/project/platformdirs/4.9.4/
+
+** prance (25.4.8.0) **
+License: MITNFA
+Copyright: Jens Finkhaeuser
+Download: https://pypi.org/project/prance/25.4.8.0/
+Note: MITNFA (MIT +no-false-attribs) — MIT variant, verify for compliance.
+
+** prometheus_client (0.24.1) **
+License: Apache-2.0 AND BSD-2-Clause
+Copyright: Prometheus Authors
+Download: https://pypi.org/project/prometheus_client/0.24.1/
+
+** prompt_toolkit (3.0.52) **
+License: BSD License
+Copyright: Jonathan Slenders
+Download: https://pypi.org/project/prompt_toolkit/3.0.52/
+
+** propcache (0.4.1) **
+License: Apache Software License
+Copyright: aio-libs contributors
+Download: https://pypi.org/project/propcache/0.4.1/
+
+** py-key-value-aio (0.3.0) **
+License: Apache Software License
+Copyright: py-key-value contributors
+Download: https://pypi.org/project/py-key-value-aio/0.3.0/
+
+** py-key-value-shared (0.3.0) **
+License: Apache Software License
+Copyright: py-key-value contributors
+Download: https://pypi.org/project/py-key-value-shared/0.3.0/
+
+** py-openapi-schema-to-json-schema (0.0.3) **
+License: MIT License
+Copyright: py-openapi contributors
+Download: https://pypi.org/project/py-openapi-schema-to-json-schema/0.0.3/
+
+** pycodestyle (2.14.0) **
+License: MIT
+Copyright: Johann C. Rocholl
+Download: https://pypi.org/project/pycodestyle/2.14.0/
+
+** pycparser (3.0) **
+License: BSD-3-Clause
+Copyright: Eli Bendersky
+Download: https://pypi.org/project/pycparser/3.0/
+
+** pydantic (2.12.5) **
+License: MIT
+Copyright: Samuel Colvin
+Download: https://pypi.org/project/pydantic/2.12.5/
+
+** pydantic-settings (2.13.1) **
+License: MIT
+Copyright: Samuel Colvin
+Download: https://pypi.org/project/pydantic-settings/2.13.1/
+
+** pydantic_core (2.41.5) **
+License: MIT
+Copyright: Samuel Colvin
+Download: https://pypi.org/project/pydantic_core/2.41.5/
+
+** pydocket (0.18.2) **
+License: MIT License
+Copyright: pydocket contributors
+Download: https://pypi.org/project/pydocket/0.18.2/
+
+** pyperclip (1.11.0) **
+License: BSD License
+Copyright: Al Sweigart
+Download: https://pypi.org/project/pyperclip/1.11.0/
+
+** python-dateutil (2.9.0.post0) **
+License: Apache Software License; BSD License
+Copyright: Gustavo Niemeyer
+Download: https://pypi.org/project/python-dateutil/2.9.0.post0/
+
+** python-dotenv (1.2.2) **
+License: BSD-3-Clause
+Copyright: Saurabh Kumar
+Download: https://pypi.org/project/python-dotenv/1.2.2/
+
+** python-json-logger (4.0.0) **
+License: BSD License
+Copyright: Zakaria Zajac
+Download: https://pypi.org/project/python-json-logger/4.0.0/
+
+** python-multipart (0.0.22) **
+License: Apache-2.0
+Copyright: Andrew Dunham
+Download: https://pypi.org/project/python-multipart/0.0.22/
+
+** pywin32 (311) **
+License: Python Software Foundation License
+Copyright: Mark Hammond
+Download: https://pypi.org/project/pywin32/311/
+
+** pywin32-ctypes (0.2.3) **
+License: BSD-3-Clause
+Copyright: David Cournapeau
+Download: https://pypi.org/project/pywin32-ctypes/0.2.3/
+
+** questionary (2.1.1) **
+License: MIT License
+Copyright: Tom Bocklisch
+Download: https://pypi.org/project/questionary/2.1.1/
+
+** redis (7.3.0) **
+License: MIT
+Copyright: Redis Inc.
+Download: https://pypi.org/project/redis/7.3.0/
+
+** referencing (0.37.0) **
+License: MIT
+Copyright: Julian Berman
+Download: https://pypi.org/project/referencing/0.37.0/
+
+** requests (2.32.5) **
+License: Apache Software License
+Copyright: Kenneth Reitz
+Download: https://pypi.org/project/requests/2.32.5/
+
+** rfc3339-validator (0.1.4) **
+License: MIT License
+Copyright: Nicolas Aimetti
+Download: https://pypi.org/project/rfc3339-validator/0.1.4/
+
+** rich (14.3.3) **
+License: MIT License
+Copyright: Will McGugan
+Download: https://pypi.org/project/rich/14.3.3/
+
+** rich-rst (1.3.2) **
+License: MIT
+Copyright: Will McGugan
+Download: https://pypi.org/project/rich-rst/1.3.2/
+
+** rpds-py (0.30.0) **
+License: MIT
+Copyright: rpds-py contributors
+Download: https://pypi.org/project/rpds-py/0.30.0/
+
+** ruamel.yaml (0.19.1) **
+License: MIT License
+Copyright: Anthon van der Neut
+Download: https://pypi.org/project/ruamel.yaml/0.19.1/
+
+** s3transfer (0.16.0) **
+License: Apache Software License
+Copyright: Amazon.com, Inc.
+Download: https://pypi.org/project/s3transfer/0.16.0/
+
+** shellingham (1.5.4) **
+License: ISC License (ISCL)
+Copyright: Tzu-ping Chung
+Download: https://pypi.org/project/shellingham/1.5.4/
+
+** six (1.17.0) **
+License: MIT License
+Copyright: Benjamin Peterson
+Download: https://pypi.org/project/six/1.17.0/
+
+** slack_bolt (1.27.0) **
+License: MIT License
+Copyright: Slack Technologies, LLC
+Download: https://pypi.org/project/slack_bolt/1.27.0/
+
+** slack_sdk (3.40.1) **
+License: MIT License
+Copyright: Slack Technologies, LLC
+Download: https://pypi.org/project/slack_sdk/3.40.1/
+
+** sortedcontainers (2.4.0) **
+License: Apache Software License
+Copyright: Grant Jenks
+Download: https://pypi.org/project/sortedcontainers/2.4.0/
+
+** soupsieve (2.8.3) **
+License: MIT
+Copyright: Isaac Muse
+Download: https://pypi.org/project/soupsieve/2.8.3/
+
+** sse-starlette (3.3.2) **
+License: BSD-3-Clause
+Copyright: Sebastien Ponce
+Download: https://pypi.org/project/sse-starlette/3.3.2/
+
+** starlette (0.52.1) **
+License: BSD-3-Clause
+Copyright: Tom Christie
+Download: https://pypi.org/project/starlette/0.52.1/
+
+** strands-agents (1.29.0) **
+License: Apache Software License
+Copyright: Amazon Web Services
+Download: https://pypi.org/project/strands-agents/1.29.0/
+
+** strands-agents-tools (0.2.22) **
+License: Apache Software License
+Copyright: Amazon Web Services
+Download: https://pypi.org/project/strands-agents-tools/0.2.22/
+
+** sympy (1.14.0) **
+License: BSD License
+Copyright: SymPy Development Team
+Download: https://pypi.org/project/sympy/1.14.0/
+
+** tenacity (9.1.4) **
+License: Apache Software License
+Copyright: Julien Danjou
+Download: https://pypi.org/project/tenacity/9.1.4/
+
+** toml (0.10.2) **
+License: MIT License
+Copyright: William Pearson
+Download: https://pypi.org/project/toml/0.10.2/
+
+** typer (0.24.1) **
+License: MIT
+Copyright: Sebastian Ramirez
+Download: https://pypi.org/project/typer/0.24.1/
+
+** typing-inspection (0.4.2) **
+License: MIT
+Copyright: typing-inspection contributors
+Download: https://pypi.org/project/typing-inspection/0.4.2/
+
+** typing_extensions (4.15.0) **
+License: PSF-2.0 (Python Software Foundation License)
+Copyright: Python Software Foundation
+Download: https://pypi.org/project/typing_extensions/4.15.0/
+
+** tzdata (2025.3) **
+License: Apache-2.0
+Copyright: Paul Ganssle
+Download: https://pypi.org/project/tzdata/2025.3/
+
+** uncalled-for (0.2.0) **
+License: MIT License
+Copyright: uncalled-for contributors
+Download: https://pypi.org/project/uncalled-for/0.2.0/
+
+** urllib3 (2.6.3) **
+License: MIT
+Copyright: Andrey Petrov
+Download: https://pypi.org/project/urllib3/2.6.3/
+
+** uvicorn (0.41.0) **
+License: BSD-3-Clause
+Copyright: Tom Christie
+Download: https://pypi.org/project/uvicorn/0.41.0/
+
+** watchdog (6.0.0) **
+License: Apache Software License
+Copyright: Yesudeep Mangalapilly
+Download: https://pypi.org/project/watchdog/6.0.0/
+
+** websockets (16.0) **
+License: BSD-3-Clause
+Copyright: Aymeric Augustin
+Download: https://pypi.org/project/websockets/16.0/
+
+** wrapt (1.17.3) **
+License: BSD License
+Copyright: Graham Dumpleton
+Download: https://pypi.org/project/wrapt/1.17.3/
+
+** yarg (0.1.10) **
+License: MIT License
+Copyright: Karan Lyons
+Download: https://pypi.org/project/yarg/0.1.10/
+
+** yarl (1.23.0) **
+License: Apache-2.0
+Copyright: aio-libs contributors
+Download: https://pypi.org/project/yarl/1.23.0/
+
+** zipp (3.23.0) **
+License: MIT
+Copyright: Jason R. Coombs
+Download: https://pypi.org/project/zipp/3.23.0/

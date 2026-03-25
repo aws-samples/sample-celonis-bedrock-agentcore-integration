@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.bedrock_agentcore/
+.bedrock_agentcore.yaml
+THREAT_MODEL.md
