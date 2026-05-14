@@ -30,8 +30,8 @@ mcp_client = MCPClient(
 )
 
 bedrock_model = BedrockModel(
-    model_id="us.anthropic.claude-sonnet-4-20250514-v1:0",
-    region_name="us-east-1",
+    model_id=os.environ.get("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6"),
+    region_name=os.environ.get("AWS_REGION", "us-east-1"),
     streaming=True,
 )
 
