@@ -5,3 +5,5 @@ __pycache__/
 .bedrock_agentcore/
 .bedrock_agentcore.yaml
 THREAT_MODEL.md
+DEV_NOTES.md
+publish_to_github.ps1

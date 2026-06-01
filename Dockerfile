@@ -10,8 +10,10 @@ COPY agent.py ./
 RUN useradd --create-home appuser
 USER appuser
 
+# Populated by sync_stack_outputs.py from CloudFormation stack outputs.
 ENV AWS_REGION=us-east-1
 ENV GATEWAY_URL=
+ENV BEDROCK_MODEL_ID=us.anthropic.claude-sonnet-4-6
 
 EXPOSE 8080
 

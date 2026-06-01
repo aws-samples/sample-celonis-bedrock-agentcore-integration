@@ -6,4 +6,4 @@ mcp-proxy-for-aws==1.1.6
 boto3==1.42.73
 python-dotenv==1.2.2
 ruamel.yaml==0.19.1
-requests==2.32.5
+requests==2.33.0

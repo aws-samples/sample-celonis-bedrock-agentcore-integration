@@ -13,6 +13,7 @@ load_dotenv()
 
 GATEWAY_URL = os.environ["GATEWAY_URL"]
 AWS_REGION = os.environ.get("AWS_REGION", "us-east-1")
+MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
 
 # ---------------------------------------------------------------------------
 # MCP client via AgentCore Gateway (SigV4 auth — no tokens to manage)
@@ -29,7 +30,7 @@ mcp_client = MCPClient(
 # Bedrock model
 # ---------------------------------------------------------------------------
 bedrock_model = BedrockModel(
-    model_id="us.anthropic.claude-sonnet-4-20250514-v1:0",
+    model_id=MODEL_ID,
     region_name=AWS_REGION,
     streaming=True,
 )

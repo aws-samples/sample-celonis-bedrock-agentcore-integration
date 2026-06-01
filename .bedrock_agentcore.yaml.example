@@ -14,7 +14,7 @@ agents:
       execution_role: null
       execution_role_auto_create: true
       account: null
-      region: us-east-1
+      region: null
       ecr_repository: null
       ecr_auto_create: true
       s3_path: null
