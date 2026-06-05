@@ -1,8 +1,28 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: >
-  Celonis Process Agent on Amazon Bedrock AgentCore — provisions IAM roles,
-  AgentCore Identity (OAuth2), AgentCore Gateway + MCP target, and Cognito
+  Celonis Process Agent on Amazon Bedrock AgentCore — provisions AWS IAM roles,
+  AgentCore Identity (OAuth2), AgentCore Gateway + MCP target, and Amazon Cognito
   User Pool for inbound JWT authentication.
+
+# =============================================================================
+# SECURITY RESPONSIBILITIES
+# This template creates authentication and authorization resources.
+#   AWS manages: Infrastructure security, service availability, and encryption
+#   at rest for AWS Secrets Manager, Amazon Cognito, and CloudWatch Logs.
+#   You are responsible for: Securing the Celonis OAuth2 credentials passed as
+#   parameters, managing IAM policies and least privilege access, rotating
+#   Amazon Cognito client secrets, monitoring CloudWatch logs for security
+#   events, and configuring network access controls for production deployments.
+# For more information, see the AWS Shared Responsibility Model:
+#   https://aws.amazon.com/compliance/shared-responsibility-model/
+#
+# PREREQUISITE — CLOUDTRAIL:
+#   This template does NOT provision AWS CloudTrail. For production deployments,
+#   enable CloudTrail in your account to log API-level access to Secrets Manager,
+#   Amazon Cognito, IAM, and Amazon Bedrock AgentCore. CloudTrail is an
+#   account-level resource and is essential for security auditing and compliance.
+#   See: https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-a-trail-using-the-console-first-time.html
+# =============================================================================
 
 # =============================================================================
 # Parameters — everything that was previously hardcoded or in .env
@@ -42,9 +62,9 @@ Parameters:
       - claude-opus-4.7
       - claude-haiku-4.5
     Description: >
-      Which Bedrock model to use. The template maps this to the correct
+      Which Amazon Bedrock model to use. The template maps this to the correct
       inference profile and foundation model ARNs.
-      Ensure the model is enabled in Bedrock Model Access for your region.
+      Ensure the model is enabled in Amazon Bedrock Model Access for your region.
 
 # =============================================================================
 # Mappings — model lookup table + region-to-prefix mapping
@@ -175,6 +195,7 @@ Resources:
                     - Prefix: !FindInMap [RegionToPrefix, !Ref "AWS::Region", Prefix]
                       FMId: !FindInMap [ModelLookup, !Ref BedrockModel, FoundationModelId]
               # Marketplace permissions for first-time model activation
+              # aws-marketplace actions do not support resource-level permissions
               - Effect: Allow
                 Action:
                   - aws-marketplace:ViewSubscriptions
@@ -185,6 +206,7 @@ Resources:
             Version: '2012-10-17'
             Statement:
               - Effect: Allow
+                # ecr:GetAuthorizationToken does not support resource-level permissions
                 Action: ecr:GetAuthorizationToken
                 Resource: '*'
               - Effect: Allow
@@ -202,6 +224,21 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                 Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/bedrock-agentcore/*
+        - PolicyName: ObservabilityTracing
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - xray:PutTraceSegments
+                  - xray:PutTelemetryRecords
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - logs:PutLogEvents
+                Resource:
+                  - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:aws/spans:*
+                  - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/application-signals/data:*
         - PolicyName: GatewayInvokeAccess
           PolicyDocument:
             Version: '2012-10-17'
@@ -260,6 +297,38 @@ Resources:
               Scopes:
                 - !Ref CelonisOAuthScope
               GrantType: CLIENT_CREDENTIALS
+
+  # ---------------------------------------------------------------------------
+  # Observability: CloudWatch Transaction Search resource policy (one-time setup)
+  # ---------------------------------------------------------------------------
+  TransactionSearchResourcePolicy:
+    Type: AWS::Logs::ResourcePolicy
+    Properties:
+      PolicyName: AgentCoreTransactionSearchXRayAccess
+      PolicyDocument: !Sub |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "TransactionSearchXRayAccess",
+              "Effect": "Allow",
+              "Principal": { "Service": "xray.amazonaws.com" },
+              "Action": "logs:PutLogEvents",
+              "Resource": [
+                "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:aws/spans:*",
+                "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/application-signals/data:*"
+              ],
+              "Condition": {
+                "ArnLike": {
+                  "aws:SourceArn": "arn:aws:xray:${AWS::Region}:${AWS::AccountId}:*"
+                },
+                "StringEquals": {
+                  "aws:SourceAccount": "${AWS::AccountId}"
+                }
+              }
+            }
+          ]
+        }
 
   # ---------------------------------------------------------------------------
   # Cognito User Pool (inbound JWT auth for Celonis → Agent)
@@ -341,7 +410,7 @@ Outputs:
     Value: celonis-agent/invoke
 
   BedrockModelIdResolved:
-    Description: Full Bedrock model ID for agent runtime (e.g. eu.anthropic.claude-opus-4-6-v1)
+    Description: Full Amazon Bedrock model ID for agent runtime (e.g. eu.anthropic.claude-opus-4-6-v1)
     Value: !Sub
       - ${Prefix}.${FMId}
       - Prefix: !FindInMap [RegionToPrefix, !Ref "AWS::Region", Prefix]

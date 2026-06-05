@@ -1,5 +1,7 @@
 # Celonis Process Agent on Amazon Bedrock AgentCore
 
+> **⚠️ Educational sample code.** This project demonstrates an integration pattern. It is not production-ready and does not constitute legal, security, or compliance approval for the Celonis integration. Before production use, complete the [Pre-Deployment Verification Checklist](SECURITY.md#pre-deployment-verification-checklist) and review [SECURITY.md](SECURITY.md).
+
 A Strands agent that connects to Celonis MCP Server via Amazon Bedrock AgentCore Gateway, deployed on Amazon Bedrock AgentCore Runtime. Includes Amazon Cognito JWT authentication so the agent can be invoked directly from Celonis Action Flows.
 
 ## Architecture
@@ -15,9 +17,9 @@ Celonis Action Flow / Client
 AgentCore Runtime (JWT authorizer)
   │                          ▲
   │  Strands Agent +         │  Tool results
-  │  Bedrock LLM             │
+  │  Amazon Bedrock LLM      │
   ▼                          │
-AgentCore Gateway (IAM SigV4)
+AgentCore Gateway (AWS IAM SigV4)
   │                          ▲
   │  MCP protocol            │  MCP responses
   │  (OAuth2 via Identity)   │
@@ -38,8 +40,11 @@ Outbound: the Gateway handles Celonis OAuth2 tokens via Amazon Bedrock AgentCore
 - Python 3.11+
 - AWS CLI configured
 - Amazon Bedrock AgentCore Starter Toolkit (`pip install bedrock-agentcore-starter-toolkit`)
-- The chosen Bedrock model **enabled in Model Access** for your deployment region
+- The chosen Amazon Bedrock model **enabled in Model Access** for your deployment region
 - A [Celonis](https://www.celonis.com/) account with MCP Server access and OAuth2 app credentials (see [Third-Party Services](#third-party-services))
+- **Production:** [AWS CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-a-trail-using-the-console-first-time.html) enabled in your account for security audit logging (see [SECURITY.md](SECURITY.md#access-logging-and-audit))
+
+> **Note:** CloudTrail is an account-level service and is not provisioned by this sample's CloudFormation template. For production deployments, set it up before deploying. See [SECURITY.md](SECURITY.md#access-logging-and-audit) for setup commands.
 
 ## Quick Start
 
@@ -60,7 +65,7 @@ python -m venv .venv
 
 ### 3. Provision AWS resources (CloudFormation)
 
-> **First-time model access:** Bedrock models auto-enable on first invocation. For Anthropic models served via AWS Marketplace, the first invocation triggers a subscription — the template's IAM role includes the required Marketplace permissions (`aws-marketplace:ViewSubscriptions`, `aws-marketplace:Subscribe`) to handle this automatically.
+> **First-time model access:** Amazon Bedrock models auto-enable on first invocation. For Anthropic models served via AWS Marketplace, the first invocation triggers a subscription — the template's IAM role includes the required Marketplace permissions (`aws-marketplace:ViewSubscriptions`, `aws-marketplace:Subscribe`) to handle this automatically.
 
 ```bash
 aws cloudformation deploy \
@@ -108,7 +113,7 @@ This template uses **geographic cross-region inference**, which routes requests 
 | `us` | us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, ca-west-1 |
 | `eu` | eu-west-1, eu-west-2, eu-west-3, eu-central-1, eu-central-2, eu-north-1, eu-south-1, eu-south-2 |
 
-> **Note:** This template only supports US and EU regions. Deploying to other regions (APAC, Middle East, etc.) requires additional configuration for global cross-region inference. Not all models are available in all geographies — check the [Bedrock model cards](https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html) for current regional availability.
+> **Note:** This template only supports US and EU regions. Deploying to other regions (APAC, Middle East, etc.) requires additional configuration for global cross-region inference. Not all models are available in all geographies — check the [Amazon Bedrock model cards](https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html) for current regional availability.
 
 To add support for other regions, add the region to the `RegionToPrefix` mapping in `template.yaml` with the appropriate geo prefix (e.g. `au` for Sydney/Melbourne, `jp` for Tokyo/Osaka).
 
@@ -226,6 +231,42 @@ python test_local.py
 
 This verifies the Celonis MCP connection works with your credentials.
 
+## Observability
+
+The agent uses [AgentCore native observability](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability.html) powered by AWS Distro for OpenTelemetry (ADOT). No telemetry code is needed in `agent.py` — the Strands framework emits OpenTelemetry spans automatically, and ADOT (via `opentelemetry-instrument` in the Dockerfile CMD) exports them to CloudWatch.
+
+### What gets traced
+
+- Agent invocation (full lifecycle)
+- Each LLM call (model ID, token usage, latency)
+- Each MCP tool call (name, duration, inputs/outputs, success/error)
+- Event loop cycles (reasoning steps)
+
+### Setup (one-time per account)
+
+Enable CloudWatch Transaction Search so spans are queryable. This is an **account-level, one-time** setup — it is not handled by `agentcore deploy`:
+
+```bash
+aws xray update-trace-segment-destination --destination CloudWatchLogs
+```
+
+> If Transaction Search is already enabled in your account (from prior work), you can skip this — it's account-wide. Per-agent tracing is enabled automatically via `observability: enabled: true` in `.bedrock_agentcore.yaml`.
+
+### Where to view traces
+
+| Location | How to access |
+|---|---|
+| GenAI Observability dashboard | CloudWatch → Application Signals → GenAI Observability → Amazon Bedrock AgentCore |
+| Transaction Search (raw spans) | CloudWatch → Application Signals → Transaction Search → `aws/spans` |
+| Application logs (stdout) | CloudWatch → Log groups → `/aws/bedrock-agentcore/runtimes/<agent-id>-DEFAULT/runtime-logs` |
+
+### Configuration (Dockerfile)
+
+| ENV variable | Purpose |
+|---|---|
+| `OTEL_RESOURCE_ATTRIBUTES=service.name=celonis-process-agent` | Service name shown in dashboards |
+| `OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental` | Includes tool inputs/outputs in span data |
+
 ## Cleanup
 
 Delete the agent runtime and all AWS resources:
@@ -260,9 +301,15 @@ aws cloudformation delete-stack --stack-name celonis-agentcore
 | AgentCore Gateway | `celonis-mcp-gateway` |
 | Gateway Target | `cel` |
 
+## Security
+
+This is educational sample code. Review and harden it before any production use. See [SECURITY.md](SECURITY.md) for the full security model, including the shared responsibility split, threat model and trust boundaries, per-service guidelines (IAM, Amazon Cognito, AWS Secrets Manager, Amazon Bedrock, Amazon ECR, CloudWatch), encryption and key management, data classification, access logging and audit, compliance considerations, and operational risks.
+
 ## Third-Party Services
 
 This sample integrates with [Celonis](https://www.celonis.com/), a third-party process mining platform. To use this sample, you must have your own Celonis account with access to the Celonis MCP Server and valid OAuth2 application credentials. Your use of Celonis is governed by the [Celonis Terms of Service](https://www.celonis.com/terms-of-service/) and is separate from your use of AWS services. AWS is not responsible for Celonis services, and Celonis is not responsible for AWS services.
+
+Before connecting production data, review the [Third-Party Integration Responsibilities](SECURITY.md#third-party-integration-responsibilities) in SECURITY.md (right to use, security review, data sharing, and approval).
 
 ## License
 

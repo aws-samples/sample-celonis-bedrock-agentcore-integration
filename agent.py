@@ -27,7 +27,7 @@ mcp_client = MCPClient(
 )
 
 # ---------------------------------------------------------------------------
-# Bedrock model
+# Amazon Bedrock model
 # ---------------------------------------------------------------------------
 bedrock_model = BedrockModel(
     model_id=MODEL_ID,
@@ -60,7 +60,7 @@ def invoke(payload: dict):
         )
         result = agent(prompt)
 
-    return {"response": result.message}
+    return {"response": str(result)}
 
 
 

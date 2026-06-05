@@ -15,9 +15,13 @@ ENV AWS_REGION=us-east-1
 ENV GATEWAY_URL=
 ENV BEDROCK_MODEL_ID=us.anthropic.claude-sonnet-4-6
 
+# OpenTelemetry observability configuration
+ENV OTEL_RESOURCE_ATTRIBUTES=service.name=celonis-process-agent
+ENV OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental
+
 EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
   CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
 
-CMD ["python", "agent.py"]
+CMD ["opentelemetry-instrument", "python", "agent.py"]

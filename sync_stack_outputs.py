@@ -1,4 +1,4 @@
-"""Configure local files from CloudFormation stack outputs.
+"""Configure local files from AWS CloudFormation stack outputs.
 
 Run after 'aws cloudformation deploy' to populate .bedrock_agentcore.yaml
 and Dockerfile with the values that 'agentcore launch' needs.
