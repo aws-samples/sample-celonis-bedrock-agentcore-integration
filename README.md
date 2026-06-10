@@ -46,6 +46,82 @@ Outbound: the Gateway handles Celonis OAuth2 tokens via Amazon Bedrock AgentCore
 
 > **Note:** CloudTrail is an account-level service and is not provisioned by this sample's CloudFormation template. For production deployments, set it up before deploying. See [SECURITY.md](SECURITY.md#access-logging-and-audit) for setup commands.
 
+## Celonis MCP Server Setup
+
+Before deploying the agent, you need a working Celonis MCP Server with OAuth2 credentials. This sample uses the **Client Credentials (2LO)** grant type for automated, machine-to-machine access.
+
+### Step 1: Create the Agent Tools (MCP) asset
+
+1. Log in to your Celonis account.
+2. Navigate to **Studio** and open the package that contains your knowledge model.
+3. Choose **+ New Asset** and select type **Agent Tools (MCP)**.
+4. Enter a descriptive name for the asset.
+5. Select your knowledge model as the data source.
+6. Choose **Create**.
+
+### Step 2: Configure the tools
+
+1. In the newly created asset, choose **+ Add Tools**.
+2. Enable the tools you want your agent to use. Available tools include:
+   - `get_knowledge_model` — discover entities and columns in the knowledge model
+   - `load_data` — retrieve specific columns and rows from knowledge model entities
+   - `search_data` — run keyword searches across the knowledge model
+3. Save the asset.
+
+> **Note:** The Agent Tools asset supports a growing set of tools (Call Process Copilot, Execute Orchestration, Get Insights, etc.). Enable whichever tools fit your use case.
+
+### Step 3: Create the OAuth client (Client Credentials / 2LO)
+
+1. Open your Celonis tenant and navigate to **Admin & Settings → Applications**.
+2. Choose **Add New Application → OAuth Client**.
+3. Configure the client:
+
+   | Setting | Value |
+   |---|---|
+   | Grant Type | `Client Credentials` |
+   | Authentication Method | `Client Secret Basic` and `Client Secret Post` |
+   | Scope | `mcp-asset.tools:execute` |
+
+4. Choose **Define Scopes**, expand the MCP scope group, and select `mcp-asset.tools:execute`.
+5. Choose **Create**.
+6. Copy the **Client ID** and **Client Secret**.
+
+> **Important:** The Client Secret is shown exactly once. If you lose it, you must rotate the secret — the original value cannot be recovered. Store it in a secure location immediately.
+
+### Step 4: Grant permission to the Agent Tools asset
+
+1. In Celonis Studio, open the package that contains your Agent Tools asset.
+2. Choose **Package Settings → Permissions**.
+3. Search for the OAuth client you just created.
+4. Grant it the **Use** permission.
+5. Save.
+
+> **Important:** Without the `Use` permission, token requests succeed but the MCP Server rejects tool calls with an authorization error. This is the most common misconfiguration.
+
+### Step 5: Deploy the MCP Server
+
+1. Open the Agent Tools (MCP) asset in Celonis Studio.
+2. Choose **Create Version**.
+3. Choose **Deploy**.
+4. Wait for the deployment to complete. A link appears at the top of the asset.
+5. Copy the **MCP Server URL**. It has the form:
+   ```
+   https://<team>.<realm>.celonis.cloud/studio-copilot/api/v1/mcp-servers/mcp/<server-id>
+   ```
+
+### Connection details summary
+
+After completing the steps above, you have the four values needed for the CloudFormation deployment:
+
+| Value | Description |
+|---|---|
+| **MCP Server URL** | Displayed at the top of your published Agent Tools asset |
+| **Token URL** | `https://<team>.<realm>.celonis.cloud/oauth2/token` |
+| **Client ID** | From the OAuth client creation (Step 3) |
+| **Client Secret** | From the OAuth client creation (Step 3) |
+
+These map directly to the CloudFormation parameters `CelonisMcpServerUrl`, `CelonisTokenUrl`, `CelonisClientId`, and `CelonisClientSecret`.
+
 ## Quick Start
 
 ### 1. Set your AWS region
